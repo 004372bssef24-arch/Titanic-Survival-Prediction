@@ -52,10 +52,11 @@ This project implements a complete machine learning system to predict passenger 
 ---
 
 ## 📁 Project Structure
+
 ```
 titanic-survival-prediction/
-├── data/               # Dataset
-├── src/                # Source code modules
+├── data/                    # Dataset files
+├── src/                     # Source code modules
 │   ├── __init__.py
 │   ├── config.py
 │   ├── data_preprocessing.py
@@ -63,20 +64,20 @@ titanic-survival-prediction/
 │   ├── model_training.py
 │   ├── prediction.py
 │   └── visualization.py
-├── gui/                # Streamlit web app
+├── gui/                     # Streamlit web app
 │   ├── app.py
 │   └── pages/
 │       ├── 1_Prediction.py
 │       ├── 2_Model_Analytics.py
 │       └── 3_Data_Explorer.py
-├── models/             # Saved models (.pkl)
-├── notebooks/          # Jupyter notebooks
-├── reports/            # Figures and outputs
+├── models/                  # Saved models (.pkl)
+├── notebooks/               # Jupyter notebooks
+├── reports/                 # Figures and outputs
 │   └── figures/
-├── tests/              # Unit tests
-├── requirements.txt    # Dependencies
-├── run_pipeline.py     # Main execution script
-├── config.yaml         # Configuration
-├── LICENSE             # MIT License
-└── README.md           # Project documentation
+├── tests/                   # Unit tests
+├── requirements.txt         # Dependencies
+├── run_pipeline.py          # Main execution script
+├── config.yaml              # Configuration
+├── LICENSE                  # MIT License
+└── README.md                # Project documentation
 ```
