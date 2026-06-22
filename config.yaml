@@ -1,0 +1,106 @@
+# ============================================
+# TITANIC SURVIVAL PREDICTION - CONFIGURATION
+# ============================================
+
+project:
+  name: "Titanic Survival Prediction"
+  version: "1.0.0"
+  author: "Group 2 - IIUI"
+  description: "ML project to predict passenger survival on Titanic"
+
+# Data settings
+data:
+  raw_path: "data/titanic.csv"
+  processed_path: "data/processed/"
+  test_size: 0.2
+  random_state: 42
+  target_column: "Survived"
+
+# Preprocessing settings
+preprocessing:
+  age_fill_strategy: "median"
+  embark_fill_strategy: "mode"
+  drop_cabin: true
+  cabin_missing_threshold: 0.5
+  outlier_method: "iqr"
+  outlier_threshold: 1.5
+
+# Feature settings
+features:
+  numerical:
+    - Age
+    - Fare
+    - SibSp
+    - Parch
+  categorical:
+    - Sex
+    - Embarked
+  engineered:
+    - FamilySize
+    - IsAlone
+    - Title
+    - AgeGroup
+    - FareGroup
+  
+  # Features to use for modeling
+  selected_features:
+    - Pclass
+    - Sex_Encoded
+    - Age
+    - SibSp
+    - Parch
+    - Fare
+    - FamilySize
+    - IsAlone
+
+# Model settings
+models:
+  random_forest:
+    n_estimators: [100, 200]
+    max_depth: [10, 15, null]
+    min_samples_split: [2, 5]
+    min_samples_leaf: [1, 2]
+    cv_folds: 5
+    scoring: "accuracy"
+    random_state: 42
+  
+  logistic_regression:
+    C: [0.1, 1, 10]
+    penalty: ["l2"]
+    solver: ["liblinear", "lbfgs"]
+    max_iter: 1000
+    random_state: 42
+  
+  voting_ensemble:
+    voting: "soft"
+    weights: [1, 1]
+
+# Evaluation settings
+evaluation:
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1_score
+    - roc_auc
+  confusion_matrix: true
+  classification_report: true
+  cv_folds: 5
+
+# GUI settings
+gui:
+  enabled: true
+  title: "Titanic Survival Predictor"
+  theme: "dark"
+  port: 8501
+  debug: false
+  max_history: 100
+
+# Logging settings
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  files:
+    data_pipeline: "logs/data_pipeline.log"
+    training: "logs/training.log"
+    prediction: "logs/prediction.log"
